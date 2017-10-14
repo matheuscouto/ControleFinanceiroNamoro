@@ -1,0 +1,58 @@
+<!--
+  Generated template for the NovaTransacaoPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header  text-center>
+
+  <ion-navbar color="cabecalho2">
+    <ion-title><p style="font-size: 20px" class="fonte">Novo pagamento</p></ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="onClose()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content style="display: block; horiz-align:middle; ">
+  <div class="background-color-gradient"></div>
+  <form #f="ngForm" (ngSubmit)="onAdcTrans(f)">
+    <ion-list>
+      <ion-item style="background-color: transparent; height:60px;">
+        <ion-label class="fonte" style=" color:#FFFFFF">Quem pagou?</ion-label>
+        <ion-select name="autor" interface="popover" ngModel required>
+          <ion-option *ngFor="let user of banco.userList" [value]="{ukey:user.$key,nome:user.nome}">{{user.nome}}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="background-color: transparent; height:60px;">
+        <ion-label class="fonte" style=" color:#FFFFFF">Quanto?</ion-label>
+        <ion-input class="text-input" type="number" name="valor" placeholder="25" ngModel required></ion-input>
+      </ion-item >
+      <ion-item style="background-color: transparent; height:60px;">
+        <ion-label class="fonte" style=" color:#FFFFFF">Categoria</ion-label>
+        <ion-select name="categoria" interface="popover" ngModel>
+          <ion-option value="pizza" style="color: white !important">Comida</ion-option>
+          <ion-option value="cafe">Bebida</ion-option>
+          <ion-option value="microphone">Evento</ion-option>
+          <ion-option value="cart">Mercado</ion-option>
+          <ion-option value="code-working">Outro</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item style="background-color: transparent; height:60px;">
+        <ion-label class="fonte" style=" color:#FFFFFF">Motivo</ion-label>
+        <ion-input class="text-input" type="text" name="nome" placeholder="O que foi pago?" ngModel required></ion-input>
+      </ion-item>
+    </ion-list>
+    <div style="width:100%;" text-center>
+        <button ion-button color="botao2" round type="submit" style="width: 300px;" [disabled]="!f.valid">Registrar</button>
+    </div>
+  </form>
+</ion-content>
+
+<ion-footer>
+
+</ion-footer>
